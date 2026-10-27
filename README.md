@@ -98,3 +98,17 @@ iperf3 reported many TCP retransmits (about 12,000) during the throughput test. 
 - IP fragments are not supported and are dropped.
 - Flow state is capped at 256 connections, and further new connections are refused until restart.
 - Prototype only: not audited for production use.
+
+## Screenshots
+
+**1. Handshake and first message.** Both devices report `session established`, and `hello secret` arrives on PC2.
+
+![Handshake and first message](screenshots/1-handshake-and-first-message.png)
+
+**2. Wire capture between the devices.** The data packet is 16 bytes longer (`length 29` for a 13-byte message), the payload is unreadable, and the IP and TCP headers stay readable.
+
+![Wire capture](screenshots/2-wire-capture.png)
+
+**3. Throughput through the encrypted channel.** iperf3 transferred 2.53 GBytes at 2.17 Gbits/sec. The 5000-byte test above it also arrived complete.
+
+![iperf3 throughput](screenshots/3-iperf3-throughput.png)
